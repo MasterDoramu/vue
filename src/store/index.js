@@ -10,9 +10,30 @@ export default createStore({
     ]
   },
   mutations: {
+    addTask1(state, task){
+      state.tasks.push(task)
+    },
+    deleteTask1(state, id){
+      state.tasks = state.tasks.filter(item => item.id != id)
+    },
   },
   actions: {
+    addTasks(ctx, title){
+      const task = {
+        id: Date.now(), 
+        title: title, 
+        date: new Date(), 
+        comleted: false
+      }
+      ctx.commit('addTask1', task)
+    },
+    deleteTasks(ctx, id){
+      ctx.commit('deleteTask1', id)
+    },
   },
   getters: {
+    allTasks(state){
+      return state.tasks
+    }
   }
 })

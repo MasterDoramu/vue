@@ -1,10 +1,10 @@
 <template>
   <div > 
-    <div v-for="(task, index) in tasks" :key="task.id" class="home__tasks">
+    <div v-for="(task, index) in allTasks" :key="task.id" class="home__tasks">
       <input type="checkbox" v-model="task.comleted">
         Выполнено
       <p :class="{'home__task': task.comleted}" class="home__padding">{{index + 1}} - {{task.title}} | время: {{task.date.getDate()}}-{{task.date.getMonth()}}-{{task.date.getFullYear()}} {{task.date.getHours()}}:{{task.date.getMinutes()}}</p>
-      <input type="checkbox"  @click="deleteTask(task.id)">
+      <input type="checkbox"  @click="deleteTasks(task.id)">
         Удалить
     </div>
 
@@ -13,13 +13,15 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'tasks-home',
-  props: ['tasks'],
+    computed: {
+    ...mapGetters(["allTasks"])
+  },
   methods: {
-    deleteTask(id){
-      this.$emit('delete-task', id)
-    }
+    ...mapActions(['deleteTasks']),
+
   }
 }
 </script>

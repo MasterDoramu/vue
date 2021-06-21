@@ -4,8 +4,8 @@
     Добро пожаловать в электронный планировщик, здесь вы можете научиться управлять своим временем<br><br>
     Здесь отображены все задачи:
   </div>
-  <TasksHome :tasks="tasks" @delete-task="deleteTask"/>
-  <AddTask @add-task="addTask" />
+  <TasksHome/>
+  <AddTask />
 </div>
 
 </template>
@@ -20,16 +20,6 @@ export default {
   components: {
     TasksHome, 
     AddTask
-  },
-  props: ['tasks'],
-  methods: {
-    addTask(task){
-      this.$emit('add-task', task)
-    },
-    deleteTask(id){
-      this.$emit('delete-task', id)
-    },
-
   }
 }
 </script>

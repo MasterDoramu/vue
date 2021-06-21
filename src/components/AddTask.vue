@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: 'add-task',
   data() {
@@ -16,14 +17,9 @@ export default {
       }
   },
   methods: {
+      ...mapActions(['addTasks']),
       addTask(){
-          const task = {
-              id: Date.now(), 
-              title: this.title, 
-              date: new Date(), 
-              comleted: false
-          }
-          this.$emit('add-task', task)
+          this.addTasks(this.title)
           this.title = ''
       }
   }

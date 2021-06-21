@@ -7,33 +7,17 @@
       <router-link class="link" to="/month">Месяц</router-link>
       <router-link class="link" to="/settings">Настройки</router-link>
     </div>
+    
     <div class="main">
-      <router-view :tasks="tasks" @add-task="addTask" @delete-task="deleteTask"/>
+
+      <router-view />
     </div>    
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  data() {
-    return {
-      tasks: [
-        {id: 1, title: 'сходить в магазин', date: new Date("2021-06-19"), comleted: false},
-        {id: 2, title: 'сходить на собеседование', date: new Date("2021-06-21"), comleted: false},
-        {id: 3, title: 'сходить за водой', date: new Date("2021-06-20"), comleted: false},
-        {id: 4, title: 'заниматься программировнием', date: new Date(), comleted: false},
-      ]
-    }
-  },
-  methods: {
-    addTask(task){
-      this.tasks.push(task)
-    },
-    deleteTask(id){
-      this.tasks = this.tasks.filter(item => item.id != id)
-    },
-  }
+  name: 'app'
 }
 </script>
 
